@@ -8,9 +8,13 @@ import {
   Link,
   IconButton,
   HStack,
+  InputGroup,
+  InputLeftElement,
+  Input,
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import NextLink from "next/link";
+import { v4 as uuid } from "uuid";
 
 import {
   MdOutlineShoppingCart,
@@ -18,7 +22,7 @@ import {
   MdAccountCircle,
 } from "react-icons/md";
 
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
 
 function Header({ variant }) {
   return (
@@ -26,24 +30,48 @@ function Header({ variant }) {
       as={"header"}
       //   borderBottomWidth={variant === "light" ? "1px" : "0"}
       bgColor={variant === "light" ? "white" : "transparent"}
-      boxShadow={variant === "light" && "xs"}
-      py={5}
+      boxShadow={variant === "light" && "md"}
+      py={4}
     >
       <Container maxW={"container.lg"}>
-        <Flex justify={"space-between"} align="center">
+        <Flex align="center">
           <Box>
-            <Heading fontSize={19} fontFamily={"poppins"} fontWeight="500">
-              <Box display="inline" color={"#FBB03B"}>
-                D
-              </Box>
-              -shop
-            </Heading>
+            <NextLink href="/" passHref>
+              <Heading
+                fontSize={19}
+                fontFamily={"poppins"}
+                fontWeight="500"
+                cursor="pointer"
+              >
+                <Box display="inline" color={"#FBB03B"}>
+                  D
+                </Box>
+                -shop
+              </Heading>
+            </NextLink>
           </Box>
-          <Box display={["none", null, "block"]}>
+          <Box display={["none", null, "block"]} ml={4}>
             <DesktopLinks />
           </Box>
-          <HStack spacing={6}>
-            <MdSearch size="24px" />
+          <HStack spacing={6} flex={"1"} justifyContent={"flex-end"}>
+            <Box display={["block", null, "none"]}>
+              <MdSearch size="24px" />
+            </Box>
+            <Box display={["none", null, "block"]} flex={"1"}>
+              <InputGroup maxW="400px">
+                <InputLeftElement pointerEvents="none">
+                  <SearchIcon color="gray.300" />
+                </InputLeftElement>
+                <Input
+                  type="search"
+                  placeholder="Rechercher"
+                  variant="outline"
+                  size="md"
+                  borderRadius={"full"}
+                  borderColor="gray.600"
+                />
+              </InputGroup>
+            </Box>
             <MdOutlineShoppingCart size="24px" />
             <Box display={["none", null, "block"]}>
               <MdAccountCircle size="24px" />
@@ -64,24 +92,34 @@ function Header({ variant }) {
 const DesktopLinks = () => {
   return (
     <Stack direction="row" spacing={7}>
-      <NextLink href="/home" passHref>
-        <Link fontWeight={"medium"} fontSize="14px" fontFamily="Poppins">
-          Homme
-        </Link>
-      </NextLink>
-      <NextLink href="/home" passHref>
-        <Link fontWeight={"medium"} fontSize="14px" fontFamily="Poppins">
-          Femme
-        </Link>
-      </NextLink>
-      <NextLink href="/home" passHref>
-        <Link fontWeight={"medium"} fontSize="14px" fontFamily="Poppins">
-          Enfants
-        </Link>
-      </NextLink>
+      {categories.map(({ id, name, path }) => (
+        <NextLink href={path} passHref key={id}>
+          <Link fontWeight={"medium"} fontSize="14px" fontFamily="Poppins">
+            {name}
+          </Link>
+        </NextLink>
+      ))}
     </Stack>
   );
 };
+
+const categories = [
+  {
+    id: uuid(),
+    name: "Homme",
+    path: "/homme",
+  },
+  {
+    id: uuid(),
+    name: "Femme",
+    path: "/femme",
+  },
+  {
+    id: uuid(),
+    name: "Enfants",
+    path: "/enfants",
+  },
+];
 
 Header.propTypes = {
   variant: PropTypes.oneOf(["transparent", "light"]),

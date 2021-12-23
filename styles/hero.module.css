@@ -1,0 +1,7 @@
+.hero {
+  /* background-color: red !important; */
+  background-image: url(../public/hero.png);
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
