@@ -1,5 +1,6 @@
 .hero {
   /* background-color: red !important; */
+  background-color: #ededed;
   background-image: url(../public/hero.png);
   background-position: top;
   background-size: cover;
