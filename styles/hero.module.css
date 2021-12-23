@@ -2,7 +2,7 @@
   /* background-color: red !important; */
   background-color: #ededed;
   background-image: url(../public/hero.png);
-  background-position: top;
+  background-position: right 20% top 100%;
   background-size: cover;
   background-repeat: no-repeat;
 }
