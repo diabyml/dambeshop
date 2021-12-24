@@ -1,6 +1,9 @@
-import { Box, IconButton } from "@chakra-ui/react";
+import { Box, Divider, IconButton, Link, Stack, Text } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
 import React from "react";
+import NextLink from "next/link";
+
+import categories from "../../seed/categories";
 
 function MobileDrawer({ onClose }) {
   return (
@@ -21,7 +24,8 @@ function MobileDrawer({ onClose }) {
         width="100%"
         height={"100%"}
         zIndex={"hide"}
-      />
+        onClick={onClose}
+      ></Box>
 
       <IconButton
         aria-label="Close Drawer"
@@ -46,7 +50,26 @@ function MobileDrawer({ onClose }) {
         maxWidth={"360px"}
         height={"100%"}
         bgColor={"white"}
-      ></Box>
+      >
+        <Box p={3}>
+          <Text fontFamily="Poppins" fontSize="19px" fontWeight="600">
+            <Box d={"inline"} color="primary">
+              Dambe
+            </Box>
+            Shop
+          </Text>
+        </Box>
+        <Divider />
+        <Stack p={3}>
+          {categories.map(({ id, name, path }) => (
+            <NextLink href={path} passHref key={id}>
+              <Link fontWeight={"400"} fontSize="14px" fontFamily="Poppins">
+                {name}
+              </Link>
+            </NextLink>
+          ))}
+        </Stack>
+      </Box>
     </Box>
   );
 }

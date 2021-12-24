@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import NextLink from "next/link";
-import { v4 as uuid } from "uuid";
 
 import {
   MdOutlineShoppingCart,
@@ -27,8 +26,16 @@ import {
 import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
 import MobileDrawer from "./mobile-drawer";
 
+import categories from "../../seed/categories";
+import SearchModalBox from "./search-modal-box";
+
 function Header({ variant }) {
   const { isOpen, onToggle } = useDisclosure();
+  const {
+    isOpen: isSearchModalOpen,
+    onOpen: onSearchModalOpen,
+    onClose: onSearchModalClose,
+  } = useDisclosure();
 
   return (
     <>
@@ -61,7 +68,7 @@ function Header({ variant }) {
             </Box>
             <HStack spacing={6} flex={"1"} justifyContent={"flex-end"}>
               <Box display={["block", null, "none"]}>
-                <MdSearch size="24px" />
+                <MdSearch size="24px" onClick={onSearchModalOpen} />
               </Box>
               <Box display={["none", null, "block"]} flex={"1"}>
                 <InputGroup maxW="400px">
@@ -99,6 +106,8 @@ function Header({ variant }) {
       <Slide direction="right" in={isOpen}>
         <MobileDrawer onClose={onToggle} />
       </Slide>
+
+      <SearchModalBox isOpen={isSearchModalOpen} onClose={onSearchModalClose} />
     </>
   );
 }
@@ -116,24 +125,6 @@ const DesktopLinks = () => {
     </Stack>
   );
 };
-
-const categories = [
-  {
-    id: uuid(),
-    name: "Homme",
-    path: "/homme",
-  },
-  {
-    id: uuid(),
-    name: "Femme",
-    path: "/femme",
-  },
-  {
-    id: uuid(),
-    name: "Enfants",
-    path: "/enfants",
-  },
-];
 
 Header.propTypes = {
   variant: PropTypes.oneOf(["transparent", "light"]),
