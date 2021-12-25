@@ -32,7 +32,7 @@ function Hero() {
             _hover={{ bgColor: "primary" }}
           />
           <Text fontFamily="Poppins" fontWeight="600" fontSize="13px">
-            Acheter
+            ACHETER
           </Text>
         </HStack>
       </Container>

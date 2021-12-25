@@ -1,6 +1,19 @@
-import { Box, Heading } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Text,
+} from "@chakra-ui/react";
 import Head from "next/head";
 import { Hero } from "../components";
+import ProductCard from "../components/product-card/product-card";
+
+import img1 from "../public/img1.png";
+import img2 from "../public/img2.png";
+
 export default function Home() {
   return (
     <Box>
@@ -10,6 +23,32 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
+      <Container maxW={"container.lg"} mt={6}>
+        <Flex align="center" justify="space-between" mb={8}>
+          <Text
+            fontSize={["21px", null, "29px"]}
+            fontFamily="Poppins"
+            fontWeight="light"
+          >
+            Selection spéciale
+          </Text>
+          <Button
+            borderRadius="full"
+            size="sm"
+            fontFamily="Poppins"
+            fontWeight="semibold"
+            fontSize="13px"
+          >
+            VOIR PLUS
+          </Button>
+        </Flex>
+        <HStack overflowX={"scroll"}>
+          <ProductCard photo={img1} name="T-shirt" price={758} />
+          <ProductCard photo={img2} name="Tingade" price={300} />
+          <ProductCard photo={img1} name="T-shirt Pro" price={1000} />
+          <ProductCard photo={img2} name="Tingade Pro" price={500} />
+        </HStack>
+      </Container>
     </Box>
   );
 }
