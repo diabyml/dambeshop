@@ -1,27 +1,26 @@
-import { Box, Text } from "@chakra-ui/react";
+import { AspectRatio, Box, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import { PropTypes } from "prop-types";
-import Image from "next/image";
+// import Image from "next/image";
 
-function ProductCard({ photo, name, price }) {
+import { Image } from "@chakra-ui/react";
+
+function ProductCard({ product: { photo, name, price } }) {
   return (
-    <Box minWidth={["112px", "271px"]} maxW="271">
-      <Image
-        src={photo}
-        alt="Picture of the author"
-        // height={385}
-        placeholder="blur"
-      />
-      <Text>{name}</Text>
-      <Text>{price}</Text>
-    </Box>
+    <Stack direction="column">
+      <Image src={photo} alt="Product" height={"286px"} />
+      <Box fontFamily="Poppins" fontSize="14px">
+        <Text color="secondary" fontWeight="700">
+          {name}
+        </Text>
+        <Text color={"#696969"}>{`${price} fcfa`}</Text>
+      </Box>
+    </Stack>
   );
 }
 
 ProductCard.propTypes = {
-  // photo
-  name: PropTypes.string,
-  price: PropTypes.number,
+  product: PropTypes.object,
 };
 
 export default ProductCard;

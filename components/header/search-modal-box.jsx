@@ -38,12 +38,7 @@ function SearchModalBox({ isOpen, onClose }) {
           <CloseButton onClick={onClose} />
         </HStack>
         <Divider />
-        <Box p={3}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque,
-          officia reiciendis. Eius, recusandae rerum voluptas obcaecati quo
-          veniam explicabo sapiente dignissimos fugiat numquam unde blanditiis
-          consequuntur repudiandae esse sint eos.
-        </Box>
+        <Box p={3}></Box>
       </ModalContent>
     </Modal>
   );

@@ -12,7 +12,6 @@ import {
   InputLeftElement,
   Input,
   useDisclosure,
-  Slide,
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import NextLink from "next/link";
@@ -24,13 +23,11 @@ import {
 } from "react-icons/md";
 
 import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
-import MobileDrawer from "./mobile-drawer";
 
-import categories from "../../seed/categories";
+import { categories } from "../../seed/data";
 import SearchModalBox from "./search-modal-box";
 
-function Header({ variant }) {
-  const { isOpen, onToggle } = useDisclosure();
+function Header({ variant, onToggleDrawer }) {
   const {
     isOpen: isSearchModalOpen,
     onOpen: onSearchModalOpen,
@@ -48,7 +45,15 @@ function Header({ variant }) {
       >
         <Container maxW={"container.lg"}>
           <Flex align="center">
-            <Box>
+            <HStack spacing={3}>
+              <IconButton
+                aria-label="Menu"
+                size="sm"
+                icon={<HamburgerIcon />}
+                display={["block", null, "none"]}
+                onClick={onToggleDrawer}
+              />
+
               <NextLink href="/" passHref>
                 <Heading
                   fontSize={19}
@@ -62,7 +67,7 @@ function Header({ variant }) {
                   -shop
                 </Heading>
               </NextLink>
-            </Box>
+            </HStack>
             <Box display={["none", null, "block"]} ml={4}>
               <DesktopLinks />
             </Box>
@@ -89,24 +94,10 @@ function Header({ variant }) {
               <Box display={["none", null, "block"]}>
                 <MdAccountCircle size="24px" />
               </Box>
-              <IconButton
-                aria-label="Menu"
-                size="sm"
-                icon={<HamburgerIcon />}
-                display={["block", null, "none"]}
-                onClick={onToggle}
-              />
             </HStack>
           </Flex>
         </Container>
       </Box>
-
-      {/* Mobile drawer */}
-      {/* {isOpen && <MobileDrawer onClose={onToggle} />} */}
-      <Slide direction="right" in={isOpen}>
-        <MobileDrawer onClose={onToggle} />
-      </Slide>
-
       <SearchModalBox isOpen={isSearchModalOpen} onClose={onSearchModalClose} />
     </>
   );

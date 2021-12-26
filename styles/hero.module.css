@@ -1,8 +1,9 @@
 .hero {
   /* background-color: red !important; */
   background-color: #ededed;
-  background-image: url(../public/hero.png);
-  background-position: right 20% top 100%;
+  background-image: url(../public/my-hero.jpg);
+  /* background-position: 15top 100%; */
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }

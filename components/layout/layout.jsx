@@ -1,13 +1,17 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Slide, useDisclosure } from "@chakra-ui/react";
 import { Header } from "../";
+import MobileDrawer from "./mobile-drawer";
 
 function Layout({ children }) {
+  const { isOpen, onToggle } = useDisclosure();
   return (
     <Box minH={"100vh"}>
-      <Header variant={"light"} />
+      <Header variant={"light"} onToggleDrawer={onToggle} />
       {children}
-      {/* <Box>Footer</Box> */}
+      <Slide direction="left" in={isOpen}>
+        <MobileDrawer onClose={onToggle} />
+      </Slide>
     </Box>
   );
 }

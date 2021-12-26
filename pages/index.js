@@ -3,6 +3,8 @@ import {
   Button,
   Container,
   Flex,
+  Grid,
+  GridItem,
   Heading,
   HStack,
   Text,
@@ -11,8 +13,7 @@ import Head from "next/head";
 import { Hero } from "../components";
 import ProductCard from "../components/product-card/product-card";
 
-import img1 from "../public/img1.png";
-import img2 from "../public/img2.png";
+import { products } from "../seed/data";
 
 export default function Home() {
   return (
@@ -42,12 +43,17 @@ export default function Home() {
             VOIR PLUS
           </Button>
         </Flex>
-        <HStack overflowX={"scroll"}>
-          <ProductCard photo={img1} name="T-shirt" price={758} />
-          <ProductCard photo={img2} name="Tingade" price={300} />
-          <ProductCard photo={img1} name="T-shirt Pro" price={1000} />
-          <ProductCard photo={img2} name="Tingade Pro" price={500} />
-        </HStack>
+        <Grid
+          as="ul"
+          templateColumns={["repeat(2,1fr)", null, "repeat(4,1fr)"]}
+          gap={4}
+        >
+          {products.map((product) => (
+            <GridItem as="li" key={product.id} style={{ listStyle: "none" }}>
+              <ProductCard product={product} />
+            </GridItem>
+          ))}
+        </Grid>
       </Container>
     </Box>
   );
