@@ -7,8 +7,19 @@ import { Image } from "@chakra-ui/react";
 
 function ProductCard({ product: { photo, name, price } }) {
   return (
-    <Stack direction="column">
-      <Image src={photo} alt="Product" height={"286px"} />
+    <Stack direction="column" cursor="pointer">
+      <Box
+        bgColor="#eee"
+        bgImage={`url(${photo})`}
+        bgPosition="center"
+        bgRepeat="no-repeat"
+        bgSize="contain"
+        height={["240px", "290"]}
+        maxHeight={["240px", "290px"]}
+        // height="290px"
+        // maxHeight="290px"
+        overflow="hidden"
+      />
       <Box fontFamily="Poppins" fontSize="14px">
         <Text color="secondary" fontWeight="700">
           {name}

@@ -45,14 +45,31 @@ function Header({ variant, onToggleDrawer }) {
       >
         <Container maxW={"container.lg"}>
           <Flex align="center">
-            <HStack spacing={3}>
-              <IconButton
+            <HStack spacing={4}>
+              {/* <IconButton
                 aria-label="Menu"
                 size="sm"
                 icon={<HamburgerIcon />}
                 display={["block", null, "none"]}
                 onClick={onToggleDrawer}
-              />
+              /> */}
+
+              <Box
+                display={["block", null, "none"]}
+                cursor={"pointer"}
+                onClick={onToggleDrawer}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="16"
+                  viewBox="0 0 30 16"
+                >
+                  <rect width="30" height="1.5"></rect>
+                  <rect y="7" width="20" height="1.5"></rect>
+                  <rect y="14" width="30" height="1.5"></rect>
+                </svg>
+              </Box>
 
               <NextLink href="/" passHref>
                 <Heading

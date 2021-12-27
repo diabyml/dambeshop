@@ -49,9 +49,6 @@ export const products = [
     id: uuid(),
     name: "Men T-shirt Pro",
     price: 6000,
-    photo:
-      "https://lh3.googleusercontent.com/proxy/0bHWh45hB8hl6v9GyYSeK65bZaXIHgKiYbkjOaqvw_Hf-MhR5WwkOSd1AFKmuWJ8j-YsSapOFyL9Prk7S9zyWv_ODoXKAeqEd4tFoEZovJMrUBGe_AH8_jJ76y279GwV7WdBl3w",
-    // photo:
-    //   "https://cdn.shopify.com/s/files/1/0332/6420/5963/products/pr2-blue-2_180x.jpg?v=1606813566",
+    photo: "https://www.la-botte.com/PHOTOS/Ecco/SOFT_7_BLANC_HD.jpg",
   },
 ];
