@@ -28,7 +28,7 @@ export default function Home() {
       <Hero />
       <Container maxW={"container.lg"}>
         <Section>
-          <Flex align="center" justify="space-between">
+          <Flex align="center" justify="space-between" mb={4}>
             <Text
               fontSize={["21px", null, "29px"]}
               fontFamily="Poppins"
@@ -48,18 +48,23 @@ export default function Home() {
           </Flex>
           <Grid
             as="ul"
+            // templateColumns={[
+            //   "repeat(1,1fr)",
+            //   "repeat(2,1fr)",
+            //   null,
+            //   "repeat(4,1fr)",
+            // ]}
             templateColumns={[
               "repeat(1,1fr)",
               "repeat(2,1fr)",
-              null,
               "repeat(4,1fr)",
             ]}
-            // templateColumns={["repeat(1,1fr)",null,"repeat(4,1fr)",]}
             gap={4}
+            rowGap={6}
           >
             {products.map((product) => (
               <GridItem as="li" key={product.id} style={{ listStyle: "none" }}>
-                <SimpleProductCard product={product} />
+                <ProductCard product={product} />
               </GridItem>
             ))}
           </Grid>
