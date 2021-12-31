@@ -5,21 +5,29 @@ export const categories = [
     id: uuid(),
     name: "Homme",
     path: "/homme",
+    photo:
+      "https://images-eu.ssl-images-amazon.com/images/I/41dlOcmHEbL._QL70_ML2_.jpg",
   },
   {
     id: uuid(),
     name: "Femme",
     path: "/femme",
+    photo:
+      "https://www.cdiscount.com/pdt2/1/4/8/1/700x700/mp32229148/rw/vetements-africains-robe-d-ete-femmes-robes-mi-lon.jpg",
   },
   {
     id: uuid(),
     name: "Enfants",
     path: "/enfants",
+    photo:
+      "https://www.afrizap.com/en/wp-content/uploads/sites/2/2016/03/download-1.jpeg",
   },
   {
     id: uuid(),
     name: "Arts",
     path: "/arts",
+    photo:
+      "https://www.africapresse.paris/local/cache-vignettes/L540xH270/arton1745-70fe4.jpg?1556808249",
   },
 ];
 

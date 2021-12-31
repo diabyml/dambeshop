@@ -10,12 +10,14 @@ function ProductCard({ product: { photo, name, price } }) {
     <Stack
       direction="column"
       cursor="pointer"
-      bg={useColorModeValue("white", "gray.800")}
-      boxShadow={"lg"}
-      rounded={"lg"}
+      bgColor="gray.50"
+      boxShadow={"md"}
+      // bg={useColorModeValue("white", "gray.800")}
+      // boxShadow={"lg"}
+      // rounded={"lg"}
     >
       <Box
-        bgColor="#eee"
+        bgColor="gray.50"
         bgImage={`url(${photo})`}
         bgPosition="center"
         bgRepeat="no-repeat"
@@ -32,23 +34,13 @@ function ProductCard({ product: { photo, name, price } }) {
         </Text>
         <Text color={"#696969"}>{`${price} fcfa`}</Text>
       </Box> */}
-      <Stack pt={4} align={"center"} fontFamily={"Poppins"}>
-        <Text color={"gray.500"} fontSize={"sm"} textTransform={"uppercase"}>
-          DambeShop
-        </Text>
+      <Stack py={4} align={"center"} fontFamily={"Poppins"}>
         <Heading fontSize={"md"} fontWeight={500}>
           {name}
         </Heading>
         <Stack direction={"row"} align={"center"}>
           <Text fontWeight={800} fontSize={"lg"}>
             {`${price} fcfa`}
-          </Text>
-          <Text
-            fontSize={"lg"}
-            textDecoration={"line-through"}
-            color={"gray.600"}
-          >
-            $199
           </Text>
         </Stack>
       </Stack>
